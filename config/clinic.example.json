@@ -1,0 +1,68 @@
+{
+  "clinic": {
+    "name": "Sample Clinic",
+    "timezone": "Asia/Kolkata"
+  },
+  "booking": {
+    "slot_duration_minutes": 30,
+    "required_fields": ["patient_name", "patient_phone", "service_id", "provider_id", "starts_at"]
+  },
+  "services": [
+    {
+      "id": "general_consultation",
+      "name": "General Consultation",
+      "duration_minutes": 30
+    },
+    {
+      "id": "dental_checkup",
+      "name": "Dental Checkup",
+      "duration_minutes": 45
+    }
+  ],
+  "providers": [
+    {
+      "id": "dr_asha",
+      "name": "Dr. Asha",
+      "service_ids": ["general_consultation"],
+      "working_hours": {
+        "monday": [{"start": "09:00", "end": "13:00"}, {"start": "15:00", "end": "18:00"}],
+        "tuesday": [{"start": "09:00", "end": "13:00"}, {"start": "15:00", "end": "18:00"}],
+        "wednesday": [{"start": "09:00", "end": "13:00"}],
+        "thursday": [{"start": "09:00", "end": "13:00"}, {"start": "15:00", "end": "18:00"}],
+        "friday": [{"start": "09:00", "end": "13:00"}, {"start": "15:00", "end": "18:00"}]
+      }
+    },
+    {
+      "id": "dr_rahul",
+      "name": "Dr. Rahul",
+      "service_ids": ["dental_checkup"],
+      "working_hours": {
+        "monday": [{"start": "10:00", "end": "16:00"}],
+        "wednesday": [{"start": "10:00", "end": "16:00"}],
+        "friday": [{"start": "10:00", "end": "16:00"}]
+      }
+    }
+  ],
+  "messages": {
+    "welcome": "How can I help you book an appointment?",
+    "missing_patient_name": "Please share the patient's full name.",
+    "missing_patient_phone": "Please share a contact phone number.",
+    "missing_service_id": "Which service would you like to book?",
+    "missing_provider_id": "Which provider would you prefer?",
+    "missing_starts_at": "Please share your preferred appointment date and time.",
+    "invalid_service_id": "That service is not available. Please choose from the configured services.",
+    "invalid_provider_id": "That provider is not available for the selected service.",
+    "invalid_starts_at": "That time is outside the provider's working hours or is already booked.",
+    "booking_confirmed": "Your appointment is confirmed.",
+    "appointment_rescheduled": "Your appointment has been rescheduled.",
+    "booking_cancelled": "Your appointment has been cancelled.",
+    "booking_not_found": "I could not find that appointment.",
+    "availability_found": "That appointment time is available.",
+    "availability_not_found": "That appointment time is not available.",
+    "appointments_listed": "Here are your active appointments.",
+    "fallback": "I can help book, reschedule, cancel, list, or check availability for clinic appointments."
+  },
+  "llm": {
+    "system_prompt": "You are an appointment booking assistant. Use the available tools to book, reschedule, cancel, list, and check appointment availability. Ask concise follow-up questions if required information is missing. Dates and times passed to tools must be ISO 8601."
+  }
+}

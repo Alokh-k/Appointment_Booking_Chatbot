@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Appointment Booking Assistant</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="sidebar" aria-label="Clinic information">
+        <div>
+          <p class="eyebrow">Clinic assistant</p>
+          <h1 id="clinicName">Appointment Booking</h1>
+        </div>
+
+        <div class="panel">
+          <h2>Services</h2>
+          <div id="services" class="stack"></div>
+        </div>
+
+        <div class="panel">
+          <h2>Doctors</h2>
+          <div id="doctors" class="stack"></div>
+        </div>
+      </section>
+
+      <section class="chat" aria-label="Chat interface">
+        <header class="chatHeader">
+          <div>
+            <p class="eyebrow">Session</p>
+            <strong id="sessionId"></strong>
+          </div>
+          <a class="docsLink" href="/docs" target="_blank" rel="noreferrer">API docs</a>
+        </header>
+
+        <div id="messages" class="messages" aria-live="polite"></div>
+
+        <div id="result" class="result" hidden></div>
+
+        <form id="chatForm" class="composer">
+          <textarea
+            id="messageInput"
+            rows="3"
+            placeholder="Try: Book appointment name: Priya phone +91 99999 99999 for General Consultation with Dr. Asha at 2026-06-08T09:00"
+            required
+          ></textarea>
+          <button type="submit" aria-label="Send message">
+            <span>Send</span>
+          </button>
+        </form>
+
+        <div class="examples" aria-label="Example messages">
+          <button type="button" data-example="Is Dr. Asha available for General Consultation at 2026-06-08T09:00?">Availability</button>
+          <button type="button" data-example="Show appointments">List</button>
+          <button type="button" data-example="Cancel appointment: ">Cancel</button>
+          <button type="button" data-example="Reschedule appointment:  to 2026-06-08T10:00">Reschedule</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/app.js" type="module"></script>
+  </body>
+</html>

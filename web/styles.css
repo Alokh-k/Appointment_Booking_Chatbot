@@ -1,0 +1,279 @@
+:root {
+  color-scheme: light;
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #edf6f3;
+  --text: #182024;
+  --muted: #68737d;
+  --line: #d9dee3;
+  --accent: #0d766e;
+  --accent-strong: #075e57;
+  --danger: #a73434;
+  --shadow: 0 18px 50px rgba(26, 35, 42, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  gap: 20px;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.sidebar,
+.chat {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 22px;
+  overflow: auto;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+h2 {
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.panel {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.stack {
+  display: grid;
+  gap: 10px;
+}
+
+.infoItem {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #fbfcfd;
+}
+
+.infoItem strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.infoItem span {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.chat {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto auto auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.chatHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+#sessionId {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.docsLink {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 420px;
+  padding: 20px;
+  overflow: auto;
+}
+
+.message {
+  max-width: min(76%, 760px);
+  border-radius: 8px;
+  padding: 12px 14px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: var(--accent);
+  color: white;
+}
+
+.message.assistant {
+  align-self: flex-start;
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.message.error {
+  align-self: flex-start;
+  background: #fff2f2;
+  color: var(--danger);
+  border: 1px solid #f1c4c4;
+}
+
+.result {
+  margin: 0 20px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+  padding: 12px;
+  color: var(--muted);
+  font-size: 13px;
+  overflow: auto;
+  max-height: 180px;
+  white-space: pre-wrap;
+}
+
+.composer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  padding: 16px 20px;
+  border-top: 1px solid var(--line);
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 72px;
+  max-height: 180px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  outline: none;
+}
+
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(13, 118, 110, 0.15);
+}
+
+.composer button,
+.examples button {
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.composer button {
+  align-self: stretch;
+  min-width: 96px;
+  background: var(--accent);
+  color: white;
+}
+
+.composer button:hover {
+  background: var(--accent-strong);
+}
+
+.composer button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 20px 18px;
+}
+
+.examples button {
+  background: #e7ecef;
+  color: var(--text);
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+.examples button:hover {
+  background: #dce4e8;
+}
+
+@media (max-width: 840px) {
+  .shell {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .sidebar {
+    max-height: none;
+  }
+
+  .messages {
+    min-height: 360px;
+  }
+
+  .message {
+    max-width: 92%;
+  }
+
+  .composer {
+    grid-template-columns: 1fr;
+  }
+
+  .composer button {
+    min-height: 44px;
+  }
+}
